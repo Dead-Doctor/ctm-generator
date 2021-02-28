@@ -1,0 +1,23 @@
+{
+  "name": "ctm-generator",
+  "version": "0.1.0",
+  "description": "A Generator for connected Minecraft textures",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dead-Doctor/CTMGenerator.git"
+  },
+  "keywords": [],
+  "author": "DeadDoctor",
+  "license": "GPL-3.0-only",
+  "bugs": {
+    "url": "https://github.com/Dead-Doctor/CTMGenerator/issues"
+  },
+  "homepage": "https://github.com/Dead-Doctor/CTMGenerator#readme",
+  "devDependencies": {
+    "electron": "^11.3.0"
+  }
+}
