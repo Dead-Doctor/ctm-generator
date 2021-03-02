@@ -1,0 +1,68 @@
+:root {
+  --main-color: #e4e4e4;
+  --sec-color: #303030;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--main-color);
+  user-select: none;
+}
+
+button:focus,
+button:active:focus,
+button.active:focus,
+button.focus,
+button:active.focus,
+button.active.focus {
+  outline: none !important;
+}
+
+body {
+  background-color: var(--sec-color);
+}
+
+h1 {
+  width: 100%;
+  padding: 30px;
+  text-align: center;
+}
+
+button {
+  background-color: var(--sec-color);
+  border: 1px solid var(--main-color);
+  transition: ease-in-out 200ms;
+  cursor: pointer;
+}
+
+button:hover {
+  color: var(--sec-color);
+  background-color: var(--main-color);
+}
+
+button:active {
+  font-size: 12px;
+}
+
+.file-select {
+  display: grid;
+  width: 100%;
+  height: auto;
+  padding: 20px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 20px auto 30px;
+  gap: 20px;
+}
+
+.file-select span {
+  justify-self: center;
+}
+
+.file-select img {
+  width: 100px;
+  justify-self: center;
+  image-rendering: pixelated;
+}
