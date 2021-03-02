@@ -12,17 +12,9 @@
   user-select: none;
 }
 
-button:focus,
-button:active:focus,
-button.active:focus,
-button.focus,
-button:active.focus,
-button.active.focus {
-  outline: none !important;
-}
-
 body {
   background-color: var(--sec-color);
+  padding: 20px;
 }
 
 h1 {
@@ -39,11 +31,17 @@ button {
 }
 
 button:hover {
+  outline: none !important;
   color: var(--sec-color);
   background-color: var(--main-color);
 }
 
+button:focus {
+  outline: none !important;
+}
+
 button:active {
+  outline: none !important;
   font-size: 12px;
 }
 
@@ -51,7 +49,6 @@ button:active {
   display: grid;
   width: 100%;
   height: auto;
-  padding: 20px;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 20px auto 30px;
   gap: 20px;
@@ -64,5 +61,19 @@ button:active {
 .file-select img {
   width: 100px;
   justify-self: center;
+  image-rendering: pixelated;
+}
+
+.generate-btn {
+  width: 100%;
+  height: 30px;
+  margin-top: 20px;
+}
+
+.result-canvas {
+  display: block;
+  width: 50%;
+  height: auto;
+  margin-top: 20px;
   image-rendering: pixelated;
 }
