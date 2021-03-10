@@ -1,5 +1,5 @@
-const sys = require('sys');
 const fs = require('fs');
+const { BORDERS } = require('./constants');
 
 module.exports = {
   advancedCtx: class {
@@ -14,33 +14,42 @@ module.exports = {
       this.ctx.drawImage(this.emptyImg, 0, 0);
     }
 
-    drawBorder(borderType) {
-      switch (borderType) {
-        case TOP_LEFT_BORDER:
+    drawBorderPiece(border) {
+      switch (border) {
+        case 0:
           this.ctx.drawImage(this.borderImg, 0, 0, 1, 1, 0, 0, 1, 1);
           break;
-        case LEFT_BORDER:
+        case 1:
           this.ctx.drawImage(this.borderImg, 0, 1, 1, 14, 0, 1, 1, 14);
           break;
-        case BOTTOM_LEFT_BORDER:
+        case 2:
           this.ctx.drawImage(this.borderImg, 0, 15, 1, 1, 0, 15, 1, 1);
           break;
-        case BOTTOM_BORDER:
+        case 3:
           this.ctx.drawImage(this.borderImg, 1, 15, 14, 1, 1, 15, 14, 1);
           break;
-        case BOTTOM_RIGHT_BORDER:
+        case 4:
           this.ctx.drawImage(this.borderImg, 15, 15, 1, 1, 15, 15, 1, 1);
           break;
-        case RIGHT_BORDER:
+        case 5:
           this.ctx.drawImage(this.borderImg, 15, 1, 1, 14, 15, 1, 1, 14);
           break;
-        case TOP_RIGHT_BORDER:
+        case 6:
           this.ctx.drawImage(this.borderImg, 15, 0, 1, 1, 15, 0, 1, 1);
           break;
-        case TOP_BORDER:
+        case 7:
           this.ctx.drawImage(this.borderImg, 1, 0, 14, 1, 1, 0, 14, 1);
           break;
       }
+    }
+
+    drawBorder(i) {
+      const borderTiles = BORDERS[i];
+      borderTiles.forEach((e, j) => {
+        if (e) {
+          this.drawBorderPiece(j);
+        }
+      });
     }
 
     saveAs(name) {
