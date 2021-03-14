@@ -11,7 +11,7 @@ const {
 function createWindow() {
   const win = new BrowserWindow({
     width: 800,
-    height: 900,
+    height: 450,
     minWidth: 290,
     minHeight: 300,
     webPreferences: {
@@ -21,7 +21,13 @@ function createWindow() {
   });
   win.removeMenu();
   win.loadFile('./src/app/index.html');
-  win.webContents.openDevTools();
+  win.webContents.on('before-input-event', (event, input) => {
+    if (input.control && input.key.toLowerCase() === 'd') {
+      console.log('Developer Tools activated');
+      win.webContents.openDevTools();
+      event.preventDefault();
+    }
+  });
 }
 
 app.whenReady().then(createWindow);
