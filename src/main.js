@@ -1,5 +1,12 @@
 const { app, BrowserWindow, dialog, ipcMain } = require('electron');
-const { FILE_SELECT_EMPTY_BUTTON, FILE_SELECT_BORDER_BUTTON, EMPTY_IMAGE_OPENED, BORDER_IMAGE_OPENED } = require('../utils/constants.js');
+const {
+  FILE_SELECT_EMPTY_BUTTON,
+  FILE_SELECT_BORDER_BUTTON,
+  EMPTY_IMAGE_OPENED,
+  BORDER_IMAGE_OPENED,
+  GENERATE,
+  GENERATE_OUT,
+} = require('./libs/constants.js');
 
 function createWindow() {
   const win = new BrowserWindow({
@@ -23,7 +30,7 @@ ipcMain.on(FILE_SELECT_EMPTY_BUTTON, (event) => {
   const files = dialog.showOpenDialogSync({
     title: 'Select Empty Image..',
     buttonLabel: 'Select',
-    defaultPath: 'D:\\Code\\Elektron\\ctm-generator\\test',
+    defaultPath: process.cwd() + '\\test',
     properties: ['openFile'],
     filters: [{ name: 'Images - PNG', extensions: ['png'] }],
   });
@@ -37,13 +44,26 @@ ipcMain.on(FILE_SELECT_BORDER_BUTTON, (event) => {
   const files = dialog.showOpenDialogSync({
     title: 'Select Border Image..',
     buttonLabel: 'Select',
-    defaultPath: 'D:\\Code\\Elektron\\ctm-generator\\test',
+    defaultPath: process.cwd() + '\\test',
     properties: ['openFile'],
     filters: [{ name: 'Images - PNG', extensions: ['png'] }],
   });
 
   if (files !== undefined) {
     event.sender.send(BORDER_IMAGE_OPENED, files);
+  }
+});
+
+ipcMain.on(GENERATE, (event) => {
+  const folder = dialog.showOpenDialogSync({
+    title: 'Select Output Folder..',
+    buttonLabel: 'Select',
+    defaultPath: process.cwd() + '\\out',
+    properties: ['openDirectory'],
+  });
+
+  if (folder !== undefined) {
+    event.sender.send(GENERATE_OUT, folder);
   }
 });
 

@@ -3,6 +3,15 @@ module.exports = {
   FILE_SELECT_BORDER_BUTTON: 'fileSelectBorderButton',
   EMPTY_IMAGE_OPENED: 'emptyImageOpened',
   BORDER_IMAGE_OPENED: 'borderImageOpened',
+  GENERATE: 'generate',
+  GENERATE_OUT: 'generateOut',
+
+  PROPERTIES(id) {
+    return `matchBlocks=${id}\nmethod=ctm\ntiles=0-46`;
+  },
+  PROPERTIES_META(id, meta) {
+    return `matchBlocks=${id}\nmetadata=${meta}\nmethod=ctm\ntiles=0-46`;
+  },
 
   //generated with generator.js
   BORDERS: [

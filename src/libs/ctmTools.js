@@ -43,7 +43,7 @@ module.exports = {
       }
     }
 
-    makeImages() {
+    makeImages(folder) {
       BORDERS.forEach((borderTiles, i) => {
         this.reset();
         borderTiles.forEach((e, j) => {
@@ -51,15 +51,15 @@ module.exports = {
             this.drawBorderPiece(j);
           }
         });
-        this.saveAs(i);
+        this.saveAs(folder, i);
       });
     }
 
-    saveAs(name) {
+    saveAs(folder, name) {
       const url = this.canvas.toDataURL('image/png');
 
       const base64Data = url.replace(/^data:image\/png;base64,/, '');
-      fs.writeFile('out/' + name + '.png', base64Data, 'base64', (err) => {
+      fs.writeFile(`${folder}\\${name}.png`, base64Data, 'base64', (err) => {
         if (err) console.error(err);
       });
     }
