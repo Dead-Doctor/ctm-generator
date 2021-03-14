@@ -158,9 +158,13 @@ button:active {
 }
 
 .result-canvas {
-  display: block;
+  display: block !important;
   width: 50%;
   height: auto;
   margin-top: 20px;
   image-rendering: pixelated;
+}
+
+.hidden {
+  display: none;
 }
