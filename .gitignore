@@ -1,6 +1,9 @@
 # output
 out
 
+# builds
+ctm-generator-win32-x64
+
 # Logs
 logs
 *.log
